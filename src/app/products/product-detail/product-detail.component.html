@@ -1,0 +1,89 @@
+<br />
+<br />
+<div class="panel-heading text-center">
+  <h1>{{ libro.titulo }}</h1>
+</div>
+<br />
+
+<!-- <div class="d-flex flex-column align-items-center"> -->
+<div class="mx-auto" style="width: 300px;">
+  <div class="input-group mb-1">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"
+        >Título&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+      >
+    </div>
+    <input
+      type="text"
+      class="form-control col-sm-6"
+      placeholder="{{ libro.titulo }}"
+      [disabled]="!editando"
+    />
+  </div>
+  <div class="input-group mb-1">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"
+        >Referencia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+      >
+    </div>
+    <input
+      type="text"
+      class="form-control col-sm-6"
+      placeholder="{{ libro.referencia }}"
+      [disabled]="!editando"
+    />
+  </div>
+  <div class="input-group mb-1">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"
+        >Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+      >
+    </div>
+    <input
+      type="text"
+      class="form-control col-sm-6"
+      placeholder="{{ libro.autor }}"
+      [disabled]="!editando"
+    />
+  </div>
+  <div class="input-group mb-1">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Disponibilidad</span>
+    </div>
+    <input
+      type="text"
+      class="form-control col-sm-6"
+      placeholder="{{ libro.estado }}"
+      [disabled]="!editando"
+    />
+  </div>
+</div>
+
+<!-- <div class="panel-heading"> -->
+<div class="d-flex justify-content-around">
+  <div class="col-md-6">
+    <br />
+    <br />
+    <div class="d-flex justify-content-around">
+      <div>
+        <button type="button" class="btn btn-danger" (click)="borrarLibro()">
+          Borrar
+        </button>
+      </div>
+      <div>
+        <button type="button" class="btn bg-success" (click)="editar()">
+          Editar
+        </button>
+      </div>
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [routerLink]="['/products']"
+        >
+          Atrás
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

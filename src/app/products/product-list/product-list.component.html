@@ -1,0 +1,68 @@
+<div class="panel panel-primary ml-5 mr-5">
+  <div class="panel-heading">
+    <h4>
+      Ahora mismo la biblioteca dispone de
+      {{ libros && libros.length ? libros.length + " " : "" }} títulos
+    </h4>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <p>Filtrar por título:</p>
+        <input
+          class="form-control"
+          type="text"
+          name="search"
+          [(ngModel)]="searchText"
+          autocomplete="off"
+          placeholder="&#61442;  introduce el título del libro que buscas"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label class="control-label" for="titulo">Título:</label>
+        <input class="form-control" type="text" name="titulo" #nuevoTitulo />
+      </div>
+
+      <div class="col-md-3">
+        <label class="control-label" for="autor">Autor:</label>
+        <input class="form-control" type="text" name="autor" #nuevoAutor />
+      </div>
+      <div class="col-md-3">
+        <label class="control-label" for="referencia">Referencia:</label>
+        <input class="form-control" type="text" name="referencia" #nuevaReferencia/>
+      </div>
+
+      <div class="d-flex flex-row justify-content-center">
+        <br />
+        <button (click)="agregarLibro(nuevoTitulo,nuevoAutor,nuevaReferencia)" class="btn btn-primary">
+          Agregar
+        </button>
+      </div>
+    </div>
+    <hr />
+    <table class="table table-hover">
+      <thead>
+        <tr class="bg-secondary">
+          <th scope="col">Título</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Referencia</th>
+          <th scope="col">Disponibilidad</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let libro of libros | filter: searchText">
+        <tr>
+          <th scope="row">
+            <a [routerLink]="['/libros', libro.id]">{{ libro.titulo }}</a>
+          </th>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.referencia }}</td>
+          <td>{{ libro.estado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
