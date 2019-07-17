@@ -3,23 +3,26 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { AuthServiceService } from '../services/auth-service.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthServiceService, private router: Router) { }
+    constructor(
+        private router: Router,
+        private authenticationService: AuthServiceService
+    ) {}
 
-  canActivate() {
-    if (this.authService.getToken()) {
-      // login TRUE
-      return true;
-    } else {
-      this.router.navigate(['/users/login']);
-      return false;
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        const currentUser = this.authenticationService.currentUserValue;
+        if (currentUser) {
+            // authorised so return true
+            return true;
+        }
+
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/admin'], { queryParams: { returnUrl: state.url }});
+        return false;
     }
-  }
 }
-
 
 
 
