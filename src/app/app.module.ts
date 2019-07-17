@@ -10,13 +10,15 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { fakeBackendProvider, JwtInterceptor, ErrorInterceptor } from '../app/shared/guards';
+import { RegisterComponent } from './register';
 import { from } from 'rxjs';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent
+    AdminComponent,
+    RegisterComponent
 
 
   ],

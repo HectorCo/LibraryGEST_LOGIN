@@ -5,6 +5,7 @@ import { NotfoundComponent } from './commons/notfound/notfound.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { AdminComponent } from '../app/admin/admin/admin.component';
+import { RegisterComponent } from './register';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'products', component:ProductListComponent, canActivate: [AuthGuard]},
   {path: 'libros/:id', component: ProductDetailComponent, canActivate: [AuthGuard]},
   {path:'admin', component: AdminComponent},
+  { path: 'register', component: RegisterComponent },
   {path:'**', component: NotfoundComponent}];
 
 
